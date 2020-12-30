@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nari.mapper.UserRoleMapper">
+    <!--sql语句-->
+
+    <select id="getAllUserRole" resultType="UserRole" >
+        select * from user_role
+    </select>
+
+    <select id="getUserRoleById" resultType="UserRole">
+        select * from user_role where userId=#{userId}
+    </select>
+
+    <select id="checkUserRole" parameterType="int" resultType="int">
+        select roleId from user_role where userId=#{userId}
+    </select>
+
+    <insert id="addUserRole" parameterType="UserRole">
+        insert into user_role(userId, roleId, userRoleId)
+        values(#{userId}, #{roleId}, #{userRoleId})
+    </insert> 
+
+    <update id="alterUserRole" parameterType="UserRole">
+        update user_role set userId=#{userId}, roleId=#{roleId} where userId=#{userId}
+    </update>
+
+</mapper>
